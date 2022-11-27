@@ -12,6 +12,9 @@ namespace InternetShop
         private void login(object sender, RoutedEventArgs e)
         {
             CurrentUser.Name = TextBox.Text;
+            ShopWindow window = new ShopWindow();
+            window.Show();
+            Hide();
         }
     }
 }

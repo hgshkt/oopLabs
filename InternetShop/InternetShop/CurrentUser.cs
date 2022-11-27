@@ -9,5 +9,4 @@ public static class CurrentUser
         get => name;
         set => name = value;
     }
-
 }
