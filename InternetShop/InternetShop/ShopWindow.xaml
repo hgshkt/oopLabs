@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:InternetShop"
         mc:Ignorable="d"
-        Title="ShopWindow" Height="760" Width="1080"
+        Title="ShopWindow" Height="680" Width="1080"
         ResizeMode="NoResize">
     <StackPanel>
         <StackPanel Orientation="Horizontal">
@@ -32,102 +32,13 @@
             FontSize="30"
             Margin="20 20 20 20" />
 
-        <StackPanel Orientation="Horizontal">
-
-            <StackPanel>
-                <Image
-                    Name="Image0"
-                    Width="200"
-                    Height="200"/>
-                <Label Name="ProductName0">Назва</Label>
-                <Label Name="ProductCost0">Ціна</Label>
-            </StackPanel>
-            
-            <StackPanel>
-                <Image
-                    Name="Image1"
-                    Width="200"
-                    Height="200"/>
-                <Label Name="ProductName1">Назва</Label>
-                <Label Name="ProductCost1">Ціна</Label>
-            </StackPanel>
-            
-            <StackPanel>
-                <Image
-                    Name="Image2"
-                    Width="200"
-                    Height="200"/>
-                <Label Name="ProductName2">Назва</Label>
-                <Label Name="ProductCost2">Ціна</Label>
-            </StackPanel>
-            
-            <StackPanel>
-                <Image
-                    Name="Image3"
-                    Width="200"
-                    Height="200"/>
-                <Label Name="ProductName3">Назва</Label>
-                <Label Name="ProductCost3">Ціна</Label>
-            </StackPanel>
-            
-            <StackPanel>
-                <Image
-                    Name="Image4"
-                    Width="200"
-                    Height="200"/>
-                <Label Name="ProductName4">Назва</Label>
-                <Label Name="ProductCost4">Ціна</Label>
-            </StackPanel>
-
-        </StackPanel>
-        
-        <StackPanel Orientation="Horizontal">
-
-            <StackPanel>
-                <Image
-                    Name="Image5"
-                    Width="200"
-                    Height="200"/>
-                <Label Name="ProductName5">Назва</Label>
-                <Label Name="ProductCost5">Ціна</Label>
-            </StackPanel>
-            
-            <StackPanel>
-                <Image
-                    Name="Image6"
-                    Width="200"
-                    Height="200"/>
-                <Label Name="ProductName6">Назва</Label>
-                <Label Name="ProductCost6">Ціна</Label>
-            </StackPanel>
-            
-            <StackPanel>
-                <Image
-                    Name="Image7"
-                    Width="200"
-                    Height="200"/>
-                <Label Name="ProductName7">Назва</Label>
-                <Label Name="ProductCost7">Ціна</Label>
-            </StackPanel>
-            
-            <StackPanel>
-                <Image
-                    Name="Image8"
-                    Width="200"
-                    Height="200"/>
-                <Label Name="ProductName8">Назва</Label>
-                <Label Name="ProductCost8">Ціна</Label>
-            </StackPanel>
-            
-            <StackPanel>
-                <Image
-                    Name="Image9"
-                    Width="200"
-                    Height="200"/>
-                <Label Name="ProductName9">Назва</Label>
-                <Label Name="ProductCost9">Ціна</Label>
-            </StackPanel>
-
+        <StackPanel>
+            <ScrollViewer
+                Name="ScrollViewer"
+                VerticalScrollBarVisibility="Hidden"
+                HorizontalScrollBarVisibility="Visible">
+                
+            </ScrollViewer>
         </StackPanel>
     </StackPanel>
 </Window>

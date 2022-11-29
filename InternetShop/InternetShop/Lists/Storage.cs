@@ -5,7 +5,7 @@ namespace InternetShop.Lists;
 
 public static class Storage
 {
-    private static readonly List<Book> Books = new();
+    public static readonly List<Book> Books = new();
 
     static Storage() {
         Books.Add(new Book("lovecraft1", "Збірник Лавкрафт том 1", 360));
