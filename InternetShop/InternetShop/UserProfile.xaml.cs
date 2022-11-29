@@ -6,7 +6,7 @@ namespace InternetShop;
 
 public partial class UserProfile : Window
 {
-    private StackPanel _sp = new();
+    private readonly StackPanel _sp = new();
     
     public UserProfile()
     {
@@ -40,7 +40,7 @@ public partial class UserProfile : Window
 
     private void BackButtonClick(object sender, RoutedEventArgs e)
     {
-        ShopWindow window = new ShopWindow();
+        var window = new ShopWindow();
         window.Show();
         Hide();
     }

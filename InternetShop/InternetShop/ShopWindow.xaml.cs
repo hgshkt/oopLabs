@@ -15,7 +15,7 @@ public partial class ShopWindow : Window
 
         _sp.Orientation = Orientation.Horizontal;
 
-        foreach (var bookView in list.views)
+        foreach (var bookView in list.Views)
         {
             _sp.Children.Add(bookView);
         }
@@ -25,7 +25,7 @@ public partial class ShopWindow : Window
 
     private void ToUserProfile(object sender, RoutedEventArgs e)
     {
-        UserProfile window = new UserProfile();
+        var window = new UserProfile();
         window.Show();
         Hide();
     }

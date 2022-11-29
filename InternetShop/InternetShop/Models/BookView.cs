@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Media.Imaging;
 
 namespace InternetShop.Models;
 
 public class BookView : StackPanel
 {
-    public readonly Image Image = new();
-    public readonly Label LabelName = new();
-    public readonly Label LabelCost = new();
-    public readonly Button Button = new();
+    private readonly Image _image = new();
+    private readonly Label _labelName = new();
+    private readonly Label _labelCost = new();
+    private readonly Button _button = new();
     
     private Book _book;
-    private bool _purchased;
+    private readonly bool _purchased;
 
     public BookView(Book book, bool purchased)
     {
@@ -25,8 +23,8 @@ public class BookView : StackPanel
         CreatingView();
         BindBook(book);
     }
-    
-    void click(object sender, EventArgs e)
+
+    private void Click(object sender, EventArgs e)
     {
         CurrentUser.BuyBook(_book);
     }
@@ -36,31 +34,31 @@ public class BookView : StackPanel
         
         Margin = new Thickness(10, 0, 10, 0);
 
-        Image.Name = "image";
-        Image.Width = 200;
-        Image.Height = 300;
-        Children.Add(Image);
+        _image.Name = "image";
+        _image.Width = 200;
+        _image.Height = 300;
+        Children.Add(_image);
 
-        LabelName.Name = "labelName";
-        LabelName.Width = 200;
-        LabelName.Height = 40;
-        Children.Add(LabelName);
+        _labelName.Name = "labelName";
+        _labelName.Width = 200;
+        _labelName.Height = 40;
+        Children.Add(_labelName);
 
-        LabelCost.Name = "labelCost";
-        LabelCost.Width = 200;
-        LabelCost.Height = 40;
-        Children.Add(LabelCost);
+        _labelCost.Name = "labelCost";
+        _labelCost.Width = 200;
+        _labelCost.Height = 40;
+        Children.Add(_labelCost);
 
         if (!_purchased) return;
         var labelInButton = new Label();
         labelInButton.Content = "Купити";
-        Button.Content = labelInButton;
+        _button.Content = labelInButton;
 
-        Button.Padding = new Thickness(10, 5, 10, 5);
-        Button.Margin = new Thickness(5, 10, 5, 10);
+        _button.Padding = new Thickness(10, 5, 10, 5);
+        _button.Margin = new Thickness(5, 10, 5, 10);
 
-        Button.Click += click;
-        Children.Add(Button);
+        _button.Click += Click;
+        Children.Add(_button);
     }
     
     private void BindBook(Book book)
@@ -72,9 +70,9 @@ public class BookView : StackPanel
         logo.UriSource = new Uri(book.ImageUri);
         logo.EndInit();
 
-        Image.Source = logo;
+        _image.Source = logo;
 
-        LabelName.Content = book.Name;
-        LabelCost.Content = book.Cost + " грн";
+        _labelName.Content = book.Name;
+        _labelCost.Content = book.Cost + " грн";
     }
 }

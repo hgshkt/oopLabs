@@ -19,9 +19,4 @@ public static class Storage
         Books.Add(new Book("it", "Книга Стівен Кінг \"Воно\"", 380));
         Books.Add(new Book("shine", "Книга Стівен Кінг \"Сяйво\"", 200));
     }
-
-    public static Book getBook(int number)
-    {
-        return Books[number];
-    }
 }
