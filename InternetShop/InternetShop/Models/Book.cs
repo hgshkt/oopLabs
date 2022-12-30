@@ -6,13 +6,13 @@ namespace InternetShop.Models;
 public class Book
 {
     [DataMember]
-    public string ImageUri { get; }
+    public string ImageUri { set; get; }
 
     [DataMember]
-    public string Name { get; }
+    public string Name { set; get; }
 
     [DataMember]
-    public int Cost { get; }
+    public int Cost { set; get; }
     
     public Book(string imageName, string name, int cost)
     {

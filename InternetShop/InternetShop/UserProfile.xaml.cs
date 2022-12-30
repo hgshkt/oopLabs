@@ -32,7 +32,7 @@ public partial class UserProfile : Window
     private void TopUpButtonClick(object sender, RoutedEventArgs e)
     {
         var amount = int.Parse(TopUpBox.Text);
-        User.currentUser.Count += amount;
+        User.currentUser.accrue(amount);
         
         UpdateUi();
     }

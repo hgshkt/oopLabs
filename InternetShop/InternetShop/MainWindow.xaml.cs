@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Runtime.Serialization.Json;
+using System.Windows;
 using InternetShop.Models;
 
 namespace InternetShop
@@ -12,7 +15,21 @@ namespace InternetShop
 
         private void Login(object sender, RoutedEventArgs e)
         {
-            User.currentUser.Name = TextBox.Text;
+            
+            DataContractJsonSerializer serializer = new(typeof(User));
+
+            string path = @"" + TextBox.Text + ".json";
+            if (File.Exists(path))
+            {
+                FileStream stream = new FileStream(path, FileMode.Open);
+                User.currentUser = (User)serializer.ReadObject(stream);   
+                stream.Close();
+            }
+            else
+            {
+                User.currentUser = new(TextBox.Text);
+            }
+
             var window = new ShopWindow();
             window.Show();
             Hide();
