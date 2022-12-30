@@ -19,12 +19,6 @@
                 Content="Мій профіль"
                 FontSize="20"
                 Click="ToUserProfile" />
-
-            <TextBlock
-                Text="рахунок"
-                FontSize="20"
-                Width="100"
-                Margin="30" />
         </StackPanel>
 
         <Label

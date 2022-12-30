@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using InternetShop.Lists;
 
@@ -28,5 +29,12 @@ public partial class ShopWindow : Window
         var window = new UserProfile();
         window.Show();
         Hide();
+    }
+    
+    protected override void OnClosed(EventArgs e)
+    {
+        base.OnClosed(e);
+
+        Application.Current.Shutdown();
     }
 }

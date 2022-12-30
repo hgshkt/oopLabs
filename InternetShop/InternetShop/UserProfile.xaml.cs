@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using InternetShop.Models;
 
@@ -32,7 +33,7 @@ public partial class UserProfile : Window
     private void TopUpButtonClick(object sender, RoutedEventArgs e)
     {
         var amount = int.Parse(TopUpBox.Text);
-        User.currentUser.accrue(amount);
+        User.currentUser?.accrue(amount);
         
         UpdateUi();
     }
@@ -42,5 +43,12 @@ public partial class UserProfile : Window
         var window = new ShopWindow();
         window.Show();
         Hide();
+    }
+    
+    protected override void OnClosed(EventArgs e)
+    {
+        base.OnClosed(e);
+
+        Application.Current.Shutdown();
     }
 }

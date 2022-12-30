@@ -34,5 +34,12 @@ namespace InternetShop
             window.Show();
             Hide();
         }
+        
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
+        }
     }
 }
