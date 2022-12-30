@@ -26,7 +26,7 @@ public class BookView : StackPanel
 
     private void Click(object sender, EventArgs e)
     {
-        CurrentUser.BuyBook(_book);
+        User.currentUser.BuyBook(_book);
     }
 
     private void CreatingView()

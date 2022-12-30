@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using InternetShop.Models;
 
 namespace InternetShop
 {
@@ -11,7 +12,7 @@ namespace InternetShop
 
         private void Login(object sender, RoutedEventArgs e)
         {
-            CurrentUser.Name = TextBox.Text;
+            User.currentUser.Name = TextBox.Text;
             var window = new ShopWindow();
             window.Show();
             Hide();

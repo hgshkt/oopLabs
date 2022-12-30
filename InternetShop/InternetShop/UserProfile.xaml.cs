@@ -7,7 +7,6 @@ namespace InternetShop;
 public partial class UserProfile : Window
 {
     private readonly StackPanel _sp = new();
-    
     public UserProfile()
     {
         InitializeComponent();
@@ -15,7 +14,7 @@ public partial class UserProfile : Window
         
         _sp.Orientation = Orientation.Horizontal;
         
-        foreach (var book in CurrentUser.history)
+        foreach (var book in User.currentUser.history)
         {
             var bookView = new BookView(book, false);
             _sp.Children.Add(bookView);
@@ -25,15 +24,15 @@ public partial class UserProfile : Window
 
     private void UpdateUi()
     {
-        UserName.Text = CurrentUser.Name;
-        UserCount.Text = CurrentUser.Count.ToString();
+        UserName.Text = User.currentUser.Name;
+        UserCount.Text = User.currentUser.Count.ToString();
         TopUpBox.Text = "";
     }
 
     private void TopUpButtonClick(object sender, RoutedEventArgs e)
     {
         var amount = int.Parse(TopUpBox.Text);
-        CurrentUser.Count += amount;
+        User.currentUser.Count += amount;
         
         UpdateUi();
     }
