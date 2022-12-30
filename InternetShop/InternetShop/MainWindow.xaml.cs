@@ -22,12 +22,12 @@ namespace InternetShop
             if (File.Exists(path))
             {
                 FileStream stream = new FileStream(path, FileMode.Open);
-                User.currentUser = (User)serializer.ReadObject(stream);   
+                User.CurrentUser = (User)serializer.ReadObject(stream)!;   
                 stream.Close();
             }
             else
             {
-                User.currentUser = new(TextBox.Text);
+                User.CurrentUser = new(TextBox.Text);
             }
 
             var window = new ShopWindow();

@@ -15,7 +15,7 @@ public partial class UserProfile : Window
         
         _sp.Orientation = Orientation.Horizontal;
         
-        foreach (var book in User.currentUser.History)
+        foreach (var book in User.CurrentUser!.History)
         {
             var bookView = new BookView(book, false);
             _sp.Children.Add(bookView);
@@ -25,15 +25,15 @@ public partial class UserProfile : Window
 
     private void UpdateUi()
     {
-        UserName.Text = User.currentUser.Name;
-        UserCount.Text = User.currentUser.Count.ToString();
+        UserName.Text = User.CurrentUser!.Name;
+        UserCount.Text = User.CurrentUser.Count.ToString();
         TopUpBox.Text = "";
     }
 
     private void TopUpButtonClick(object sender, RoutedEventArgs e)
     {
         var amount = int.Parse(TopUpBox.Text);
-        User.currentUser?.accrue(amount);
+        User.CurrentUser?.Accrue(amount);
         
         UpdateUi();
     }

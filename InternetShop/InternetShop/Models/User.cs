@@ -8,22 +8,18 @@ namespace InternetShop.Models;
 [DataContract]
 public class User
 {
-    public static User? currentUser;
+    public static User? CurrentUser;
 
     [DataMember] public string Name { get; set; }
-
-    private int _count;
-
     [DataMember] public int Count { get; set; }
-
     [DataMember] public List<Book> History { get; set; }
 
     public User(string name)
     {
         Name = name;
-        History = new();
-        _count = 0;
-        save();
+        History = new List<Book>();
+        Count = 0;
+        Save();
     }
 
     public void BuyBook(Book book)
@@ -31,22 +27,20 @@ public class User
         if (Count < book.Cost) return;
         Count -= book.Cost;
         History.Add(book);
-        save();
+        Save();
     }
 
-    public void accrue(int count)
+    public void Accrue(int count)
     {
         Count += count;
-        save();
+        Save();
     }
 
-    private void save()
+    private void Save()
     {
         DataContractJsonSerializer serializer = new(typeof(User));
-        using (FileStream stream = new(Name + ".json", FileMode.OpenOrCreate))
-        {
-            serializer.WriteObject(stream, this);
-            stream.Close();
-        }
+        using FileStream stream = new(Name + ".json", FileMode.OpenOrCreate);
+        serializer.WriteObject(stream, this);
+        stream.Close();
     }
 }
