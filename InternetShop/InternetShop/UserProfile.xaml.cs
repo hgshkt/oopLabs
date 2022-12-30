@@ -14,7 +14,7 @@ public partial class UserProfile : Window
         
         _sp.Orientation = Orientation.Horizontal;
         
-        foreach (var book in User.currentUser.history)
+        foreach (var book in User.currentUser.History)
         {
             var bookView = new BookView(book, false);
             _sp.Children.Add(bookView);
