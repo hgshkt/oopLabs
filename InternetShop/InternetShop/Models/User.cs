@@ -26,6 +26,7 @@ public class User
     {
         if (Count < book.Cost) return;
         Count -= book.Cost;
+        book.Number--;
         History.Add(book);
         Save();
     }
@@ -39,7 +40,7 @@ public class User
     private void Save()
     {
         DataContractJsonSerializer serializer = new(typeof(User));
-        using FileStream stream = new(Name + ".json", FileMode.OpenOrCreate);
+        using FileStream stream = new("users/" + Name + ".json", FileMode.OpenOrCreate);
         serializer.WriteObject(stream, this);
         stream.Close();
     }

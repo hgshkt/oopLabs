@@ -13,11 +13,15 @@ public class Book
 
     [DataMember]
     public int Cost { set; get; }
-    
-    public Book(string imageName, string name, int cost)
+
+    [DataMember]
+    public int Number { set; get; }
+
+    public Book(string imageName, string name, int cost, int number)
     {
         ImageUri = "pack://application:,,,/assets/" + imageName + ".jpg";
         Name = name;
         Cost = cost;
+        Number = number;
     }
 }

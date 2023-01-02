@@ -17,7 +17,7 @@ public partial class UserProfile : Window
         
         foreach (var book in User.CurrentUser!.History)
         {
-            var bookView = new BookView(book, false);
+            var bookView = new BookView(book, BookView.Type.History);
             _sp.Children.Add(bookView);
         }
         ScrollViewer.Content = _sp;

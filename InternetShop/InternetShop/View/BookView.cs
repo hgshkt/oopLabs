@@ -10,15 +10,16 @@ public class BookView : StackPanel
     private readonly Image _image = new();
     private readonly Label _labelName = new();
     private readonly Label _labelCost = new();
+    private readonly Label _labelNumber = new();
     private readonly Button _button = new();
     
     private Book _book;
-    private readonly bool _purchased;
+    private Type _type;
 
-    public BookView(Book book, bool purchased)
+    public BookView(Book book, Type type)
     {
-        _purchased = purchased;
         _book = book;
+        _type = type;
         
         CreatingView();
         BindBook(book);
@@ -44,21 +45,28 @@ public class BookView : StackPanel
         _labelName.Height = 40;
         Children.Add(_labelName);
 
-        _labelCost.Name = "labelCost";
-        _labelCost.Width = 200;
-        _labelCost.Height = 40;
-        Children.Add(_labelCost);
+        if (_type == Type.Shop)
+        {
+            _labelCost.Name = "labelCost";
+            _labelCost.Width = 200;
+            _labelCost.Height = 40;
+            Children.Add(_labelCost);
+        
+            _labelNumber.Name = "labelNumber";
+            _labelNumber.Width = 200;
+            _labelNumber.Height = 40;
+            Children.Add(_labelNumber);
+            
+            var labelInButton = new Label();
+            labelInButton.Content = "Купити";
+            _button.Content = labelInButton;
 
-        if (!_purchased) return;
-        var labelInButton = new Label();
-        labelInButton.Content = "Купити";
-        _button.Content = labelInButton;
+            _button.Padding = new Thickness(10, 5, 10, 5);
+            _button.Margin = new Thickness(5, 10, 5, 10);
 
-        _button.Padding = new Thickness(10, 5, 10, 5);
-        _button.Margin = new Thickness(5, 10, 5, 10);
-
-        _button.Click += Click;
-        Children.Add(_button);
+            _button.Click += Click;
+            Children.Add(_button);
+        }
     }
     
     private void BindBook(Book book)
@@ -74,5 +82,18 @@ public class BookView : StackPanel
 
         _labelName.Content = book.Name;
         _labelCost.Content = book.Cost + " грн";
+        if (book.Number > 0)
+        {
+            _labelNumber.Content = "Залишилось: " + book.Number;
+        }
+        else
+        {
+            _labelNumber.Content = "Товар закінчився";
+        }
+    }
+    
+    public enum Type
+    {
+        History, Shop
     }
 }

@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using InternetShop.Lists;
+using InternetShop.Models;
 
 namespace InternetShop;
 
@@ -12,7 +13,7 @@ public partial class ShopWindow : Window
     public ShopWindow()
     {
         InitializeComponent();
-        var list = new BookViewList(true);
+        var list = new BookViewList(BookView.Type.Shop);
 
         _sp.Orientation = Orientation.Horizontal;
 

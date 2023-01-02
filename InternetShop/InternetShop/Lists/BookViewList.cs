@@ -7,10 +7,11 @@ public class BookViewList
 {
     public readonly List<BookView> Views = new();
 
-    public BookViewList(bool purchased) {
-        foreach (var book in Storage.Books)
+    public BookViewList(BookView.Type type)
+    {
+        foreach (var book in Storage.Instance.Books)
         {
-            var bookView = new BookView(book, purchased);
+            var bookView = new BookView(book, type);
             Views.Add(bookView);
         }
     }
