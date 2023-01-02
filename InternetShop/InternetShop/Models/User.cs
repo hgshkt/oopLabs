@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using InternetShop.Lists;
 
 namespace InternetShop.Models;
 
@@ -29,6 +30,7 @@ public class User
         book.Number--;
         History.Add(book);
         Save();
+        Storage.Instance.save();
     }
 
     public void Accrue(int count)

@@ -18,7 +18,7 @@ namespace InternetShop
             
             DataContractJsonSerializer serializer = new(typeof(User));
 
-            string path = @"" + TextBox.Text + ".json";
+            string path = @"users/" + TextBox.Text + ".json";
             if (File.Exists(path))
             {
                 FileStream stream = new FileStream(path, FileMode.Open);

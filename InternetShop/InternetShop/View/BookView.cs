@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -28,6 +29,7 @@ public class BookView : StackPanel
     private void Click(object sender, EventArgs e)
     {
         User.CurrentUser?.BuyBook(_book);
+        updateUI();
     }
 
     private void CreatingView()
@@ -68,7 +70,19 @@ public class BookView : StackPanel
             Children.Add(_button);
         }
     }
-    
+
+    private void updateUI()
+    {
+        if (_book.Number > 0)
+        {
+            _labelNumber.Content = "Залишилось: " + _book.Number;
+        }
+        else
+        {
+            _labelNumber.Content = "Товар закінчився";
+        }
+    }
+
     private void BindBook(Book book)
     {
         _book = book;
@@ -82,14 +96,8 @@ public class BookView : StackPanel
 
         _labelName.Content = book.Name;
         _labelCost.Content = book.Cost + " грн";
-        if (book.Number > 0)
-        {
-            _labelNumber.Content = "Залишилось: " + book.Number;
-        }
-        else
-        {
-            _labelNumber.Content = "Товар закінчився";
-        }
+
+        updateUI();
     }
     
     public enum Type
